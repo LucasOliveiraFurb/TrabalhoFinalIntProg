@@ -17,6 +17,7 @@ public class JogoDaVelha {
         {
             jogar(teclado);
 
+            System.out.println("\n________________________");
             System.out.println("Deseja jogar novamente (s/n)?");
             letraEscolhida = teclado.next().charAt(0);
         }
@@ -26,14 +27,19 @@ public class JogoDaVelha {
     private void jogar(Scanner teclado) {
         this.jogoMapa.limpar();
 
-        int escolhaIniciante = this.jogoMapa.sortear(1, 2); // 1 - pessoa 2 - computador
-        
+        int escolhaIniciante = this.jogoMapa.sortear(0, 2);
+
         for (int qtdeJogadas = 0; qtdeJogadas <= 9; qtdeJogadas++) {
             this.jogoMapa.desenhar(qtdeJogadas);
 
+            if (qtdeJogadas == 9 && !this.jogoMapa.verificarGanhador('X') && !this.jogoMapa.verificarGanhador('O'))
+            {
+                System.out.println("...EMPATOU!");
+                break;
+            }
+            
             if (escolhaIniciante == 1) {
-                if (jogoJogador.jogar(teclado))
-                {
+                if (jogoJogador.jogar(teclado)) {
                     this.jogoMapa.desenhar(qtdeJogadas + 1);
                     break;
                 }
@@ -41,15 +47,14 @@ public class JogoDaVelha {
                 escolhaIniciante = 2;
             }
             else {
-                if (jogoPC.jogar())
-                {
+                if (jogoPC.jogar()) {
                     this.jogoMapa.desenhar(qtdeJogadas + 1);
                     break;
                 }
+
                 escolhaIniciante = 1;
             }
         }
-
     }
     public static void main(String[] args) {
         new JogoDaVelha();

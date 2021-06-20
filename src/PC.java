@@ -6,7 +6,7 @@ public class PC {
         this.mapa = mapa;
     }
 
-    public boolean jogar() { //?????????????
+    public boolean jogar() {
         int linha = 0;
         int coluna = 0;
 
@@ -15,6 +15,8 @@ public class PC {
             coluna = this.mapa.sortear(0, 3);
         }
         while (!this.mapa.jogar(linha, coluna, letra));
+
+        System.out.println("PC[" + linha + "," + coluna + "]");
 
         if (this.mapa.verificarGanhador(letra))
         {

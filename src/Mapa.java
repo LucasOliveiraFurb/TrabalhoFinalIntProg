@@ -1,13 +1,13 @@
 public class Mapa {
-    private char[][] mapa = new char[3][3]; //precisa inicializa?
+    private char[][] mapa = new char[3][3];
 
     public int sortear(int inicio, int fim) {
         return (int) ((Math.random() * fim) - inicio);
     }
 
     public void limpar() {
-        for (int linha = 0; linha < mapa.length; linha++) {
-            for (int coluna = 0; coluna < mapa.length; coluna++) {
+        for (int linha = 0; linha < this.mapa.length; linha++) {
+            for (int coluna = 0; coluna < this.mapa.length; coluna++) {
                 this.mapa[linha][coluna] = ' ';
             }
         }
@@ -15,11 +15,11 @@ public class Mapa {
 
     public void desenhar(int jogada) {
         System.out.println("------------- .. jogada: " + jogada);
-        System.out.println("| " + mapa[0][0] + " | " + mapa[0][1] + " | " + mapa[0][2] + " |");
+        System.out.println("| " + this.mapa[0][0] + " | " + this.mapa[0][1] + " | " + this.mapa[0][2] + " |");
         System.out.println("-------------");
-        System.out.println("| " + mapa[1][0] + " | " + mapa[1][1] + " | " + mapa[1][2] + " |");
+        System.out.println("| " + this.mapa[1][0] + " | " + this.mapa[1][1] + " | " + this.mapa[1][2] + " |");
         System.out.println("-------------");
-        System.out.println("| " + mapa[2][0] + " | " + mapa[2][1] + " | " + mapa[2][2] + " |");
+        System.out.println("| " + this.mapa[2][0] + " | " + this.mapa[2][1] + " | " + this.mapa[2][2] + " |");
         System.out.println("----------------------------");
     }
 
@@ -39,22 +39,22 @@ public class Mapa {
 
     public boolean verificarGanhador(char jogador) {
         //linha
-        if ((mapa[0][0] == jogador && mapa[0][1] == jogador && mapa[0][2] == jogador) 
-        || (mapa[1][0] == jogador && mapa[1][1] == jogador && mapa[1][2] == jogador) 
-        || (mapa[2][0] == jogador && mapa[2][1] == jogador && mapa[2][2] == jogador)) {
+        if ((this.mapa[0][0] == jogador && this.mapa[0][1] == jogador && this.mapa[0][2] == jogador) 
+        || (this.mapa[1][0] == jogador && this.mapa[1][1] == jogador && this.mapa[1][2] == jogador) 
+        || (this.mapa[2][0] == jogador && this.mapa[2][1] == jogador && this.mapa[2][2] == jogador)) {
             return true;
         }
 
         //coluna
-        if ((mapa[0][0] == jogador && mapa[1][0] == jogador && mapa[2][0] == jogador) 
-        || (mapa[0][1] == jogador && mapa[1][1] == jogador && mapa[2][1] == jogador) 
-        || (mapa[0][2] == jogador && mapa[1][2] == jogador && mapa[2][2] == jogador)) {
+        if ((this.mapa[0][0] == jogador && this.mapa[1][0] == jogador && this.mapa[2][0] == jogador) 
+        || (this.mapa[0][1] == jogador && this.mapa[1][1] == jogador && this.mapa[2][1] == jogador) 
+        || (this.mapa[0][2] == jogador && this.mapa[1][2] == jogador && this.mapa[2][2] == jogador)) {
             return true;
         }
 
         //diagonal
-        if ((mapa[0][0] == jogador && mapa[1][1] == jogador && mapa[2][2] == jogador) 
-        || (mapa[0][2] == jogador && mapa[1][1] == jogador && mapa[2][0] == jogador)) {
+        if ((this.mapa[0][0] == jogador && this.mapa[1][1] == jogador && this.mapa[2][2] == jogador) 
+        || (this.mapa[0][2] == jogador && this.mapa[1][1] == jogador && this.mapa[2][0] == jogador)) {
             return true;
         }
 
